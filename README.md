@@ -8,6 +8,7 @@ APP_HOST=app.example.com
 APP_PATH=/path
 APP_PORT=80
 GIN_MODE=debug
+OAUTH2_ENABLED=false
 TIMEZONE=
 TRUST_PROXY=localhost
 ```
