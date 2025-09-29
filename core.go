@@ -17,7 +17,6 @@ type App struct {
 	AppHost    string
 	AppPath    string
 	AppPort    string
-	GinMode    string
 	Location   *time.Location
 	TrustProxy string
 	Visibility string
@@ -32,11 +31,6 @@ func New() (*App, error) {
 		return nil, err
 	}
 
-	ginMode := os.Getenv("GIN_MODE")
-	if ginMode != "debug" && ginMode != "release" && ginMode != "test" {
-		return nil, errors.New("Invalid GIN_MODE value. (debug | release | test)")
-	}
-
 	visibility := os.Getenv("VISIBILITY")
 	if visibility != "internal" && visibility != "external" {
 		return nil, errors.New("Invalid VISIBILITY value. (internal | external)")
@@ -47,7 +41,6 @@ func New() (*App, error) {
 		AppHost:    os.Getenv("APP_HOST"),
 		AppPath:    path.Join("/", os.Getenv("APP_PATH")),
 		AppPort:    os.Getenv("APP_PORT"),
-		GinMode:    ginMode,
 		Location:   loc,
 		TrustProxy: os.Getenv("TRUST_PROXY"),
 		Visibility: visibility,
