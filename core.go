@@ -12,14 +12,14 @@ import (
 //
 // ================================================================
 type App struct {
-	AppRootUrl *url.URL
-	AppTitle   string
+	AppEnv     string
 	AppHost    string
 	AppPath    string
 	AppPort    string
 	Location   *time.Location
 	TrustProxy string
 	Visibility string
+	AppRootUrl *url.URL
 }
 
 // ================================================================
@@ -37,7 +37,7 @@ func New() (*App, error) {
 	}
 
 	env := &App{
-		AppTitle:   os.Getenv("APP_TITLE"),
+		AppEnv:     os.Getenv("APP_ENV"),
 		AppHost:    os.Getenv("APP_HOST"),
 		AppPath:    path.Join("/", os.Getenv("APP_PATH")),
 		AppPort:    os.Getenv("APP_PORT"),
