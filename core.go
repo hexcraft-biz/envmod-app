@@ -19,7 +19,7 @@ type App struct {
 	Location   *time.Location
 	TrustProxy string
 	Visibility string
-	AppBaseUrl *url.URL
+	AppBaseURL *url.URL
 }
 
 // ================================================================
@@ -46,6 +46,6 @@ func New() (*App, error) {
 		Visibility: visibility,
 	}
 
-	env.AppBaseUrl, err = url.ParseRequestURI("https://" + path.Join(env.AppHost, env.AppPath))
+	env.AppBaseURL, err = url.ParseRequestURI("https://" + path.Join(env.AppHost, env.AppPath))
 	return env, err
 }
